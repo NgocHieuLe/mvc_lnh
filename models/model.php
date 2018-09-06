@@ -31,7 +31,6 @@ class Model
             'status' => $status
         );
         $statement->execute($data);
-        DB::getInstance()->lastInsertId();
     }
 
     static function update($title, $start, $end, $status, $id)
