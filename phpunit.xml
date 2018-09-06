@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="vendor/autoload.php" colors="true">
+   <testsuite>
+       <testsuite name="">
+            <directory suffix = "Test.php">test</directory>
+       </testsuite>
+   </testsuite>
+   <filter>
+       <blacklist>
+           <directory>./vendor</directory>
+       </blacklist>
+   </filter>
+</phpunit>
