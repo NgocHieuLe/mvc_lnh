@@ -31,6 +31,7 @@ class Model
             'status' => $status
         );
         $statement->execute($data);
+        DB::getInstance()->lastInsertId();
     }
 
     static function update($title, $start, $end, $status, $id)
@@ -48,6 +49,7 @@ class Model
         );
 
         $statement->execute($data);
+        DB::getInstance()->lastInsertId();
     }
 
     static function delete($id)
@@ -61,5 +63,6 @@ class Model
         );
 
         $statement->execute($data);
+        DB::getInstance()->lastInsertId();
     }
 }
