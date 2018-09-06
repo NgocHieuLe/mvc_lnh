@@ -12,8 +12,8 @@ class Model
 {
     static function load()
     {
-        $conn = DB::getInstance();
-        $statement = $conn->prepare('SELECT * FROM Work');
+        $connection = Database::getInstance();
+        $statement = $connection->prepare('SELECT * FROM Work');
         $statement->execute();
         $items = $statement->fetchAll();
         return $items;
@@ -21,24 +21,24 @@ class Model
 
     static function insert($title, $start, $end, $status)
     {
-        $conn = DB::getInstance();
+        $connnection = Database::getInstance();
         $query = 'INSERT INTO Work (title, startDate, endDate, status) values (:title, :startDate, :endDate, :status)';
-        $stmt = $conn->prepare($query);
+        $statement = $connnection->prepare($query);
         $data = array(
             'title' => $title,
             'startDate' => $start,
             'endDate' => $end,
             'status' => $status
         );
-        $stmt->execute($data);
+        $statement->execute($data);
         DB::getInstance()->lastInsertId();
     }
 
     static function update($title, $start, $end, $status, $id)
     {
-        $conn = DB::getInstance();
+        $connnection = Database::getInstance();
         $query = 'UPDATE Work SET title=:title, startDate=:startDate, endDate=:endDate, status=:status WHERE idWork=:idWork';
-        $stmt = $conn->prepare($query);
+        $statement = $connnection->prepare($query);
 
         $data = array(
             'title' => $title,
@@ -48,19 +48,19 @@ class Model
             'idWork' => $id
         );
 
-        $stmt->execute($data);
+        $statement->execute($data);
     }
 
     static function delete($id)
     {
-        $conn = DB::getInstance();
+        $connnection = Database::getInstance();
         $query = 'DELETE from Work WHERE idWork=:idWork';
-        $stmt = $conn->prepare($query);
+        $statement = $connnection->prepare($query);
 
         $data = array(
             'idWork' => $id
         );
 
-        $stmt->execute($data);
+        $statement->execute($data);
     }
 }
